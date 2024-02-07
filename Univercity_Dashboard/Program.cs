@@ -11,7 +11,7 @@ namespace Univercity_Dashboard
     {
         static void Main(string[] args)
         {
-            #region اکشن ها
+            #region Actions 
 
             Action PrintDateTimeAndUsersStatistic = () =>
             {
@@ -23,6 +23,14 @@ namespace Univercity_Dashboard
                     Console.WriteLine($"\nDashboard Statistic\tEmployee: {dbPrintDateTime.Employees.Count()}\t    Master: {dbPrintDateTime.Masters.Count()}\t   Student: {dbPrintDateTime.Students.Count()}\t    Course: {dbPrintDateTime.Courses.Count()}");
                 }
                 Console.WriteLine("_________________________________________________________________________________________");
+            };
+            Action PrintJustEnglish = () => 
+            {
+                PrintDateTimeAndUsersStatistic();
+                Console.WriteLine("\n\tWarning!");
+                Thread.Sleep(1000);
+                Console.WriteLine("\tOnly type English bro <3");
+                Thread.Sleep(3000);
             };
 
             Action<string> PrintWarningJustNumber = delegate (string Title)
@@ -45,7 +53,7 @@ namespace Univercity_Dashboard
 
             #endregion
 
-            #region ساخت دیتابیس و افزودن رکورد های پیش فرض
+            #region Creating DataBase & Defulte item
 
             Console.Write("\n\n\tDatabase is loadnig...");
 
@@ -66,15 +74,15 @@ namespace Univercity_Dashboard
                 }
                 if (!db.Courses.Any())
                 {
-                    db.Courses.Add(new Course("C sharp", 4, new Master("it", 3000000, "mahan", "mohamadi", "09141234567", "0123456", db.Roles.Find(2))));
-                    db.Courses.Add(new Course("MS SQL", 6, db.Masters.Add(new Master("it", 9000000, "ali", "moghadamjah", "09370051243", "137576", db.Roles.Find(2)))));
+                    db.Courses.Add(new Course("C sharp", 4, new Master("it", 3000000, "nima", "zare", "09131231234", "1234", db.Roles.Find(2))));
+                    db.Courses.Add(new Course("MS SQL", 6, db.Masters.Add(new Master("it", 9000000, "yasin", "abedini", "09101231234", "1234", db.Roles.Find(2)))));
                     Console.Clear();
                     Console.Write("\n\n\tDatabase created successfully!");
                 }
                 if (!db.Students.Any())
                 {
-                    db.Students.Add(new Student("it", "sara", "akbari", "09121234567", "123456", db.Roles.Find(3)));
-                    db.Students.Add(new Student("it", "amin", "amiri", "09121454567", "123456", db.Roles.Find(3)));
+                    db.Students.Add(new Student("it", "zahra", "mirhosseini", "09131231254", "1234", db.Roles.Find(3)));
+                    db.Students.Add(new Student("it", "hamide", "dehghani", "09132557340", "1234", db.Roles.Find(3)));
 
                     Student student = new Student("it", "ali", "raftari", "09120012345", "009988", db.Roles.Find(3));
                     Master master = new Master("it", 7100000, "arman", "mashallahi", "09129004567", "164797", db.Roles.Find(3));
@@ -89,7 +97,7 @@ namespace Univercity_Dashboard
             }
         #endregion
 
-        #region فرم ورود
+        #region login form
 
         Login:
             Console.Clear();
@@ -140,7 +148,7 @@ namespace Univercity_Dashboard
             }
         #endregion
 
-        #region گزینه های منو
+        #region menu item
 
         menu:
             PrintDateTimeAndUsersStatistic();
@@ -165,6 +173,8 @@ namespace Univercity_Dashboard
             Console.WriteLine("\t\t\t16. Remove Course");
             Console.Write("\n\t17. Change Role users");
             Console.WriteLine("\t\t\t18. Exit The Dashboard");
+            Console.Write("\n\t19. Change the background color");
+
 
             Console.Write("\nYour request number: ");
             int request;
@@ -179,7 +189,7 @@ namespace Univercity_Dashboard
 
             switch (request)
             {
-                #region نمایش لیست کارمندان
+                #region veiw Employee List
 
                 case 1:
                     PrintDateTimeAndUsersStatistic();
@@ -201,7 +211,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region نمایش لیست دانشجویان
+                #region veiw Student List
 
                 case 2:
                     PrintDateTimeAndUsersStatistic();
@@ -231,7 +241,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region نمایش لیست اساتید
+                #region veiw Master List
 
                 case 3:
                     PrintDateTimeAndUsersStatistic();
@@ -261,7 +271,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region نمایش لیست دروس
+                #region veiw Course List
 
                 case 4:
                     PrintDateTimeAndUsersStatistic();
@@ -287,7 +297,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region فرم ثبت نام کارمند جدید
+                #region Sing up new Employee
 
                 case 5:
                     PrintDateTimeAndUsersStatistic();
@@ -333,7 +343,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region فرم ثبت نام دانشجو جدید
+                #region Sing up new Student
 
                 case 6:
                     PrintDateTimeAndUsersStatistic();
@@ -368,7 +378,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region فرم ثبت نام استاد جدید
+                #region Sing up new Master
 
                 case 7:
                     PrintDateTimeAndUsersStatistic();
@@ -414,7 +424,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region فرم ثبت نام درس جدید
+                #region Sing up new Course
 
                 case 8:
                     PrintDateTimeAndUsersStatistic();
@@ -551,7 +561,7 @@ namespace Univercity_Dashboard
                     }
                 #endregion
 
-                #region فرم ویرایش اطلاعات کارمندان
+                #region Edit Info Employee
 
                 case 9:
                 employeeListForEdit:
@@ -724,7 +734,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region فرم ویرایش اطلاعات دانشجویان
+                #region Edit Info Students
 
                 case 10:
                     PrintDateTimeAndUsersStatistic();
@@ -1089,7 +1099,7 @@ namespace Univercity_Dashboard
                     }
                 #endregion
 
-                #region فرم ویرایش اطلاعات اساتید
+                #region Edit Info Master
 
                 case 11:
                 masterListForEdit:
@@ -1268,7 +1278,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region فرم ویرایش اطلاعات دروس
+                #region Edit Info Course
 
                 case 12:
                 CourseListForEdit:
@@ -1493,7 +1503,7 @@ namespace Univercity_Dashboard
                     }
                 #endregion
 
-                #region فرم حذف کارمندان
+                #region Delete Employee
 
                 case 13:
                 removeEmployee:
@@ -1545,7 +1555,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region فرم حذف دانشجویان
+                #region Delete Student
 
                 case 14:
                 removeStudent:
@@ -1597,7 +1607,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region فرم حذف اساتید
+                #region Delete Master
 
                 case 15:
                 removeMaster:
@@ -1652,7 +1662,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region فرم حذف دروس
+                #region Delete Course
 
                 case 16:
                 removeCourse:
@@ -1703,7 +1713,7 @@ namespace Univercity_Dashboard
                     goto menu;
                 #endregion
 
-                #region تغییر نقش کاربری
+                #region Change User
 
                 case 17:
                 changeRole:
@@ -1976,7 +1986,7 @@ namespace Univercity_Dashboard
 
                 #endregion
 
-                #region خروج از داشبورد
+                #region Exit
 
                 case 18:
                     Console.Clear();
@@ -1987,8 +1997,126 @@ namespace Univercity_Dashboard
                     Thread.Sleep(2000);
                     goto Login;
                 #endregion
+                #region Change background color
 
-                default:
+                    case 19:
+                    Console.Clear();
+                    PrintDateTimeAndUsersStatistic();
+                    Console.WriteLine("What color do you want to change?");
+                    string colorChoose = Console.ReadLine();
+                    string color = colorChoose.ToLower();
+                    switch (color)
+                    {
+                        case "red":
+                        case "ghermez":
+                        case "sorkh":
+                        case "qermez":
+                            if (color == "ghermez" || color == "sorkh" || color == "qermez")
+                            {
+                                PrintJustEnglish();
+                                PrintDateTimeAndUsersStatistic();
+                                Console.WriteLine("\n\nchange backgrand to '{0}' : red", color);
+                                Thread.Sleep(3000);
+                                Console.BackgroundColor = ConsoleColor.DarkRed;
+                                Console.Clear();
+                            }
+                            else
+                            {
+                                PrintDateTimeAndUsersStatistic();
+                                Console.Clear();
+                                Console.BackgroundColor = ConsoleColor.DarkRed;
+                                Console.Clear();
+                            }
+
+                            goto menu;
+
+                        case "blue":
+                        case "Abi":
+                            if (color == "Abi")
+                            {
+                                PrintJustEnglish();
+                                PrintDateTimeAndUsersStatistic();
+                                Console.WriteLine("\n\nchange backgrand to '{0}' : Blue", color);
+                                Thread.Sleep(3000);
+                                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                Console.Clear();
+                            }
+                            else
+                            {
+                                PrintDateTimeAndUsersStatistic();
+                                Console.Clear();
+                                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                Console.Clear();
+                            }
+                            goto menu;
+
+                        case "white":
+                        case "sefid":
+                        case "sifid":
+                            if (color == "sefid" || color == "sifid")
+                            {
+                                PrintJustEnglish();
+                                PrintDateTimeAndUsersStatistic();
+                                Console.WriteLine("\n\nchange backgrand to '{0}' : white", color);
+                                Thread.Sleep(3000);
+                                Console.BackgroundColor = ConsoleColor.White;
+                                Console.Clear();
+                            }
+                            else
+                            {
+                                PrintDateTimeAndUsersStatistic();
+                                Console.Clear();
+                                Console.BackgroundColor = ConsoleColor.White;
+                                Console.Clear();
+                            }
+
+                            goto menu;
+
+                        case "yellow":
+                        case "zard":
+                            if (color == "zard")
+                            {
+                                PrintJustEnglish();
+                                PrintDateTimeAndUsersStatistic();
+                                Console.WriteLine("\n\nchange backgrand to '{0}' : yellow", color);
+                                Thread.Sleep(3000);
+                                Console.BackgroundColor = ConsoleColor.DarkYellow;
+                                Console.Clear();
+                            }
+                            else
+                            {
+                                PrintDateTimeAndUsersStatistic();
+                                Console.Clear();
+                                Console.BackgroundColor = ConsoleColor.DarkYellow;
+                                Console.Clear();
+                            }
+                            goto menu;
+
+                        case "green":
+                        case "sabz":
+                            if (color == "sabz")
+                            {
+                                PrintJustEnglish();
+                                PrintDateTimeAndUsersStatistic();
+                                Console.WriteLine("\n\nchange backgrand to '{0}' : green", color);
+                                Thread.Sleep(3000);
+                                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                                Console.Clear();
+                            }
+                            else
+                            {
+                                PrintDateTimeAndUsersStatistic();
+                                Console.Clear();
+                                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                                Console.Clear();
+                            }
+                            goto menu;
+                    }
+
+                            break;
+
+                        #endregion
+                        default:
                     goto menu;
             }
         }

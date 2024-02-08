@@ -10,6 +10,7 @@ namespace Univercity_Dashboard
 {
     public abstract class User
     {
+        #region Prop
         [Key]
         public int UserId { get; set; }
         [Column(TypeName = "varchar")]
@@ -31,9 +32,9 @@ namespace Univercity_Dashboard
         public DateTime Birthdate { get; set; }
         public DateTime RegisterDate { get; set; }
         public bool IsActiv { get; set; }
+        #endregion
 
-
-
+        #region Ctor
         public User() { }
         public User(int UserId, string Name, string Family, string Phonenumber, string Password, Role RoleId)
         {
@@ -57,6 +58,7 @@ namespace Univercity_Dashboard
             Birthdate = DateTime.Now.AddYears(-25);
             RegisterDate = DateTime.Now;
             IsActiv = true;
-        }
+        } 
+        #endregion
     }
 }

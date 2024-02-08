@@ -10,6 +10,7 @@ namespace Univercity_Dashboard
 {
     public class Course
     {
+        #region Prop
         public int CourseId { get; set; }
         [Required]
         [Column(TypeName = "varchar")]
@@ -19,12 +20,14 @@ namespace Univercity_Dashboard
         public int CourseUnit { get; set; }
         public DateTime RegisterDate { get; set; }
         public bool IsActive { get; set; }
+        #endregion
 
-
+        #region Reel
         public virtual Master Master { get; set; }
         public virtual ICollection<Student> Students { get; set; }
+        #endregion
 
-
+        #region Ctor
         public Course() { }
         public Course(int CourseId, string CourseName, int CourseUnit, Master Master)
         {
@@ -42,6 +45,7 @@ namespace Univercity_Dashboard
             this.Master = Master;
             RegisterDate = DateTime.Now;
             IsActive = true;
-        }
+        } 
+        #endregion
     }
 }

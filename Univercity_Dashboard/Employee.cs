@@ -10,15 +10,18 @@ namespace Univercity_Dashboard
 {
     public class Employee : User
     {
+        #region Prop
         public string Department { get; set; }
         public float Salary { get; set; }
+        #endregion
 
-
+        #region Ctor
         public Employee() { }
         public Employee(string Department, float Salary, string Name, string Family, string Phonenumber, string Password, Role RoleId) : base(Name, Family, Phonenumber, Password, RoleId)
         {
             this.Department = Department;
             this.Salary = Salary;
-        }
+        } 
+        #endregion
     }
 }

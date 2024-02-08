@@ -24,7 +24,7 @@ namespace Univercity_Dashboard
                 }
                 Console.WriteLine("_________________________________________________________________________________________");
             };
-            Action PrintJustEnglish = () => 
+            Action PrintJustEnglish = () =>
             {
                 PrintDateTimeAndUsersStatistic();
                 Console.WriteLine("\n\tWarning!");
@@ -176,7 +176,7 @@ namespace Univercity_Dashboard
             Console.Write("\n\t19. Change the background color");
 
 
-            Console.Write("\nYour request number: ");
+            Console.Write("\n\nYour request number: ");
             int request;
             while (!int.TryParse(Console.ReadLine(), out request))
             {
@@ -1898,7 +1898,7 @@ namespace Univercity_Dashboard
                             #endregion
 
                             #region فرم تغییر نقش دانشجویان
-                            
+
                             case 3:
                             changeStudent:
                                 PrintDateTimeAndUsersStatistic();
@@ -1997,126 +1997,79 @@ namespace Univercity_Dashboard
                     Thread.Sleep(2000);
                     goto Login;
                 #endregion
+
                 #region Change background color
 
-                    case 19:
+                case 19:
                     Console.Clear();
                     PrintDateTimeAndUsersStatistic();
-                    Console.WriteLine("What color do you want to change?");
-                    string colorChoose = Console.ReadLine();
-                    string color = colorChoose.ToLower();
-                    switch (color)
+                    Console.WriteLine("\nWhat color do you want to change?\n\n\t\t\t1. RED\t\t2. BLUE\t\t\t3. GREEN\t\t4. YELLOW\n\t\t\t5. GRAY\t\t6. WHITE\t\t7. BLACK\t\t8. MAGNETA");
+                    Console.Write("\nYour answer is : ");
+                    int colorChoose = Convert.ToInt32(Console.ReadLine());
+                    switch (colorChoose)
                     {
-                        case "red":
-                        case "ghermez":
-                        case "sorkh":
-                        case "qermez":
-                            if (color == "ghermez" || color == "sorkh" || color == "qermez")
-                            {
-                                PrintJustEnglish();
-                                PrintDateTimeAndUsersStatistic();
-                                Console.WriteLine("\n\nchange backgrand to '{0}' : red", color);
-                                Thread.Sleep(3000);
-                                Console.BackgroundColor = ConsoleColor.DarkRed;
-                                Console.Clear();
-                            }
-                            else
-                            {
-                                PrintDateTimeAndUsersStatistic();
-                                Console.Clear();
-                                Console.BackgroundColor = ConsoleColor.DarkRed;
-                                Console.Clear();
-                            }
-
+                        case 1:
+                            PrintDateTimeAndUsersStatistic();
+                            Console.WriteLine("\n\nchange backgrand to red");
+                            Thread.Sleep(3000);
+                            Console.BackgroundColor = ConsoleColor.DarkRed;
+                            Console.Clear();
                             goto menu;
-
-                        case "blue":
-                        case "Abi":
-                            if (color == "Abi")
-                            {
-                                PrintJustEnglish();
-                                PrintDateTimeAndUsersStatistic();
-                                Console.WriteLine("\n\nchange backgrand to '{0}' : Blue", color);
-                                Thread.Sleep(3000);
-                                Console.BackgroundColor = ConsoleColor.DarkBlue;
-                                Console.Clear();
-                            }
-                            else
-                            {
-                                PrintDateTimeAndUsersStatistic();
-                                Console.Clear();
-                                Console.BackgroundColor = ConsoleColor.DarkBlue;
-                                Console.Clear();
-                            }
+                        case 2:
+                            PrintDateTimeAndUsersStatistic();
+                            Console.WriteLine("\n\nchange backgrand to blue");
+                            Thread.Sleep(3000);
+                            Console.BackgroundColor = ConsoleColor.Blue;
+                            Console.Clear();
                             goto menu;
-
-                        case "white":
-                        case "sefid":
-                        case "sifid":
-                            if (color == "sefid" || color == "sifid")
-                            {
-                                PrintJustEnglish();
-                                PrintDateTimeAndUsersStatistic();
-                                Console.WriteLine("\n\nchange backgrand to '{0}' : white", color);
-                                Thread.Sleep(3000);
-                                Console.BackgroundColor = ConsoleColor.White;
-                                Console.Clear();
-                            }
-                            else
-                            {
-                                PrintDateTimeAndUsersStatistic();
-                                Console.Clear();
-                                Console.BackgroundColor = ConsoleColor.White;
-                                Console.Clear();
-                            }
-
+                        case 3:
+                            PrintDateTimeAndUsersStatistic();
+                            Console.WriteLine("\n\nchange backgrand to Green");
+                            Thread.Sleep(3000);
+                            Console.BackgroundColor = ConsoleColor.Green;
+                            Console.Clear();
                             goto menu;
-
-                        case "yellow":
-                        case "zard":
-                            if (color == "zard")
-                            {
-                                PrintJustEnglish();
-                                PrintDateTimeAndUsersStatistic();
-                                Console.WriteLine("\n\nchange backgrand to '{0}' : yellow", color);
-                                Thread.Sleep(3000);
-                                Console.BackgroundColor = ConsoleColor.DarkYellow;
-                                Console.Clear();
-                            }
-                            else
-                            {
-                                PrintDateTimeAndUsersStatistic();
-                                Console.Clear();
-                                Console.BackgroundColor = ConsoleColor.DarkYellow;
-                                Console.Clear();
-                            }
+                        case 4:
+                            PrintDateTimeAndUsersStatistic();
+                            Console.WriteLine("\n\nchange backgrand to Yellow");
+                            Thread.Sleep(3000);
+                            Console.BackgroundColor = ConsoleColor.DarkYellow;
+                            Console.Clear();
                             goto menu;
-
-                        case "green":
-                        case "sabz":
-                            if (color == "sabz")
-                            {
-                                PrintJustEnglish();
-                                PrintDateTimeAndUsersStatistic();
-                                Console.WriteLine("\n\nchange backgrand to '{0}' : green", color);
-                                Thread.Sleep(3000);
-                                Console.BackgroundColor = ConsoleColor.DarkGreen;
-                                Console.Clear();
-                            }
-                            else
-                            {
-                                PrintDateTimeAndUsersStatistic();
-                                Console.Clear();
-                                Console.BackgroundColor = ConsoleColor.DarkGreen;
-                                Console.Clear();
-                            }
+                        case 5:
+                            PrintDateTimeAndUsersStatistic();
+                            Console.WriteLine("\n\nchange backgrand to Gray");
+                            Thread.Sleep(3000);
+                            Console.BackgroundColor = ConsoleColor.DarkGray;
+                            Console.Clear();
+                            goto menu;
+                        case 6:
+                            PrintDateTimeAndUsersStatistic();
+                            Console.WriteLine("\n\nchange backgrand to White");
+                            Thread.Sleep(3000);
+                            Console.BackgroundColor = ConsoleColor.White;
+                            Console.Clear();
+                            goto menu;
+                        case 7:
+                            PrintDateTimeAndUsersStatistic();
+                            Console.WriteLine("\n\nchange backgrand to Black");
+                            Thread.Sleep(3000);
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.Clear();
+                            goto menu;
+                        case 8:
+                            PrintDateTimeAndUsersStatistic();
+                            Console.WriteLine("\n\nchange backgrand to Magneta");
+                            Thread.Sleep(3000);
+                            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                            Console.Clear();
                             goto menu;
                     }
+                    break;
 
-                            break;
+                #endregion
 
-                        #endregion
-                        default:
+                default:
                     goto menu;
             }
         }
